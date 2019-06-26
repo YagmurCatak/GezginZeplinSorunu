@@ -1,0 +1,9 @@
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\bin\Release\Zeplin.exe.config
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\bin\Release\Zeplin.exe
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\bin\Release\Zeplin.pdb
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\obj\Release\Zeplin.Form1.resources
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\obj\Release\Zeplin.Properties.Resources.resources
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\obj\Release\Zeplin.csproj.GenerateResource.Cache
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\obj\Release\Zeplin.exe
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\obj\Release\Zeplin.pdb
+C:\Users\Yagmur\Desktop\ZeplinSorunu\Zeplin\Zeplin\obj\Release\Zeplin.csprojResolveAssemblyReference.cache

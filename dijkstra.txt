@@ -1,0 +1,123 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DijkstraAlgoritmasi
+{
+    class Program
+    {
+        struct table
+        {
+            public int maliyet;
+            public int onceki_sehir;
+        };
+
+        table[] maliyetDizisi = new table[81];
+        List<int> visited = new List<int>();
+        List<int> unvisited = new List<int>();
+            
+
+         void Main(string[] args)
+        {
+            int[,] graph =  {
+                { 0, 6, 0, 0, 0, 0, 0, 9, 0 },
+                { 6, 0, 9, 0, 0, 0, 0, 11, 0 },
+                { 0, 9, 0, 5, 0, 6, 0, 0, 2 },
+                { 0, 0, 5, 0, 9, 16, 0, 0, 0 },
+                { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                { 0, 0, 6, 0, 10, 0, 2, 0, 0 },
+                { 0, 0, 0, 16, 0, 2, 0, 1, 6 },
+                { 9, 11, 0, 0, 0, 0, 1, 0, 5 },
+                { 0, 0, 2, 0, 0, 0, 6, 5, 0 }
+            };
+
+             for (int i = 0; i < 81; i++)
+            {
+                unvisited.Add(i);
+                maliyetDizisi[i].maliyet = int.MaxValue;
+            }
+
+             enKisaYolBul(graph, 3, 4);
+             maliyetDizisi[3].maliyet = 0; //baslangic noktasýndaki maliyeti 0 yapýyoruz 
+
+             for (int i = 0; i < 81; i++)
+             {
+                 Console.Write(maliyetDizisi[i]);
+                 Console.WriteLine();
+             }
+        }
+
+        public void enKisaYolBul(int[,] graf, int baslangicnok, int bitisnok)
+        {
+            int maliyet = 0;
+
+            visited.Add(baslangicnok);
+            unvisited.Remove(baslangicnok);
+
+            for (int i = 0; i < 81; i++)
+            {
+                if (graf[baslangicnok, i] != 0)
+                {
+                    if (!visited.Contains(i))
+                    {
+                        maliyet = maliyetDizisi[baslangicnok].maliyet + graf[baslangicnok, i];
+
+                        if (maliyetDizisi[i].maliyet >= maliyet)
+                        {
+                            maliyetDizisi[i].maliyet = maliyet;
+                            maliyetDizisi[i].onceki_sehir = baslangicnok;
+                        }
+                    }
+                }
+             }
+
+            if (baslangicnok == bitisnok)
+            {
+                Console.Write("enkisa yol aramasi sonlandý. ");
+            }
+            else
+            {
+                int endusuk = endusukmaliyet();
+                enKisaYolBul(graf,endusuk,bitisnok);
+            }
+
+            enkisayolYazdir(baslangicnok, bitisnok);
+        }
+
+        public int endusukmaliyet()
+        {
+            int enkucuk = int.MaxValue;
+            int index = 0;
+            for (int j = 0; j < 81; j++)
+            {
+                if (maliyetDizisi[j].maliyet < enkucuk)
+                {
+                    enkucuk = maliyetDizisi[j].maliyet;
+                    index++;
+                }
+            }
+            return index;
+        }
+
+        public int enkisayolYazdir(int baslangic,int bitis)
+        {
+            int enkisamaliyet = 0;
+
+            if (baslangic != bitis)
+            {
+                enkisamaliyet = enkisamaliyet + maliyetDizisi[baslangic].maliyet; 
+                Console.Write(maliyetDizisi[baslangic].onceki_sehir);
+                enkisayolYazdir(baslangic, bitis);
+            }
+            else
+            {
+                Console.Write("en kisa yol bulundu. Maliyet = " + enkisamaliyet);
+            }
+            return 0;
+        }
+
+    }
+}
+
